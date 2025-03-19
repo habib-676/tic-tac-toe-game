@@ -14,11 +14,17 @@
   </head>
   <body>
     <main
-      class="max-w-screen-lg min-h-[80vh] mx-auto bg-slate-400 flex flex-col gap-10 justify-center items-center"
+      class="max-w-screen-lg min-h-[100vh] mx-auto bg-slate-400 flex flex-col gap-10 justify-center items-center"
     >
       <h1 class="text-center font-bold text-5xl">Tic Tac Toe</h1>
+
+      <!-- winner container -->
+      <div
+        id="winner-msg-container"
+        class="flex flex-col justify-center items-center gap-3"
+      ></div>
       <!-- container -->
-      <div class="">
+      <div id="game-container">
         <!-- game -->
         <div class="grid grid-cols-3 gap-6">
           <!-- boxes -->
