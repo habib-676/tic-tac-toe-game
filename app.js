@@ -29,15 +29,17 @@ boxes.forEach((box) => {
     }
     box.disabled = true;
     count++;
-    checkWinner();
-    if(count == 9){
+    // chatGPT
+    if (checkWinner(count)) return;
+
+    if (count == 9) {
       drawGame();
-      count=0;
+      count = 0;
     }
   });
 });
 
-const checkWinner = () => {
+const checkWinner = (count) => {
   for (let pattern of winPatterns) {
     let pos1Val = boxes[pattern[0]].innerText;
     let pos2Val = boxes[pattern[1]].innerText;
@@ -47,9 +49,12 @@ const checkWinner = () => {
       if (pos1Val === pos2Val && pos2Val === pos3Val) {
         let winner = pos1Val;
         showWinner(winner);
+        // chat gpt
+        return true; //Return true if a winner is found
       }
     }
   }
+  return false; // Return false if no winner is found
 };
 
 const showWinner = (winner) => {
@@ -65,7 +70,7 @@ const showWinner = (winner) => {
   document.getElementById("game-container").classList.add("hidden");
   resetBtn.classList.add("hidden");
 };
-function drawGame (){
+function drawGame() {
   for (let box of boxes) {
     box.innerText = "";
   }
@@ -97,5 +102,5 @@ function newGame() {
   document.getElementById("game-container").classList.remove("hidden");
   resetBtn.classList.remove("hidden");
   msgContainer.innerHTML = "";
-  count=0;
+  count = 0;
 }
